@@ -1,0 +1,238 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Army Surplus Identifier - Military-Tactical Design System */
+
+@layer base {
+  :root {
+    /* Core military palette */
+    --background: 30 6% 9%;
+    --foreground: 45 20% 90%;
+
+    --card: 30 8% 12%;
+    --card-foreground: 45 20% 90%;
+
+    --popover: 30 8% 10%;
+    --popover-foreground: 45 20% 90%;
+
+    /* Olive drab primary */
+    --primary: 80 30% 28%;
+    --primary-foreground: 45 20% 95%;
+
+    /* Khaki secondary */
+    --secondary: 45 35% 75%;
+    --secondary-foreground: 30 20% 15%;
+
+    /* Earth muted */
+    --muted: 30 10% 18%;
+    --muted-foreground: 45 10% 55%;
+
+    /* Tactical accent */
+    --accent: 35 60% 45%;
+    --accent-foreground: 30 10% 10%;
+
+    --destructive: 0 65% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 30 12% 22%;
+    --input: 30 10% 20%;
+    --ring: 80 40% 40%;
+
+    --radius: 0.375rem;
+
+    /* Custom tokens */
+    --olive: 80 30% 28%;
+    --olive-light: 80 25% 38%;
+    --olive-dark: 80 35% 18%;
+    --khaki: 45 35% 75%;
+    --khaki-dark: 45 30% 55%;
+    --earth: 25 40% 25%;
+    --earth-light: 25 35% 35%;
+    --sand: 40 30% 85%;
+    --rust: 20 50% 40%;
+    --steel: 210 10% 45%;
+
+    /* Gradients */
+    --gradient-card: linear-gradient(145deg, hsl(30 8% 14%), hsl(30 8% 10%));
+    --gradient-hero: linear-gradient(135deg, hsl(80 30% 28% / 0.3), hsl(30 8% 12%));
+    --gradient-overlay: linear-gradient(180deg, transparent, hsl(30 6% 9% / 0.9));
+
+    /* Shadows */
+    --shadow-card: 0 4px 20px -4px hsl(0 0% 0% / 0.5);
+    --shadow-button: 0 2px 8px -2px hsl(80 30% 20% / 0.4);
+    --shadow-glow: 0 0 20px hsl(80 40% 30% / 0.3);
+
+    --sidebar-background: 30 8% 10%;
+    --sidebar-foreground: 45 20% 90%;
+    --sidebar-primary: 80 30% 35%;
+    --sidebar-primary-foreground: 45 20% 95%;
+    --sidebar-accent: 30 10% 16%;
+    --sidebar-accent-foreground: 45 20% 90%;
+    --sidebar-border: 30 12% 20%;
+    --sidebar-ring: 80 40% 40%;
+  }
+
+  .dark {
+    --background: 30 6% 9%;
+    --foreground: 45 20% 90%;
+    --card: 30 8% 12%;
+    --card-foreground: 45 20% 90%;
+    --popover: 30 8% 10%;
+    --popover-foreground: 45 20% 90%;
+    --primary: 80 30% 28%;
+    --primary-foreground: 45 20% 95%;
+    --secondary: 45 35% 75%;
+    --secondary-foreground: 30 20% 15%;
+    --muted: 30 10% 18%;
+    --muted-foreground: 45 10% 55%;
+    --accent: 35 60% 45%;
+    --accent-foreground: 30 10% 10%;
+    --destructive: 0 65% 50%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 30 12% 22%;
+    --input: 30 10% 20%;
+    --ring: 80 40% 40%;
+    --sidebar-background: 30 8% 10%;
+    --sidebar-foreground: 45 20% 90%;
+    --sidebar-primary: 80 30% 35%;
+    --sidebar-primary-foreground: 45 20% 95%;
+    --sidebar-accent: 30 10% 16%;
+    --sidebar-accent-foreground: 45 20% 90%;
+    --sidebar-border: 30 12% 20%;
+    --sidebar-ring: 80 40% 40%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  /* Military grid background pattern */
+  .military-grid {
+    background-image: 
+      linear-gradient(hsl(var(--border) / 0.3) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--border) / 0.3) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
+  /* Tactical panel styling */
+  .tactical-panel {
+    background: var(--gradient-card);
+    border: 1px solid hsl(var(--border));
+    box-shadow: var(--shadow-card);
+  }
+
+  /* Stencil text effect */
+  .stencil-text {
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  /* Mono font utility */
+  .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+@layer components {
+  .btn-tactical {
+    @apply relative overflow-hidden font-mono text-sm uppercase tracking-wider;
+    @apply transition-all duration-200;
+  }
+
+  .btn-tactical::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent;
+    @apply -translate-x-full transition-transform duration-500;
+  }
+
+  .btn-tactical:hover::before {
+    @apply translate-x-full;
+  }
+
+  .input-tactical {
+    @apply bg-input border-border placeholder:text-muted-foreground/50;
+    @apply focus:ring-2 focus:ring-ring focus:border-ring;
+    @apply transition-all duration-200;
+  }
+
+  .card-tactical {
+    @apply bg-card border border-border rounded-md;
+    box-shadow: var(--shadow-card);
+  }
+
+  /* Drop zone styling */
+  .drop-zone {
+    @apply border-2 border-dashed border-border rounded-lg;
+    @apply transition-all duration-300 cursor-pointer;
+    background: repeating-linear-gradient(
+      45deg,
+      hsl(var(--muted) / 0.3),
+      hsl(var(--muted) / 0.3) 10px,
+      transparent 10px,
+      transparent 20px
+    );
+  }
+
+  .drop-zone:hover,
+  .drop-zone.active {
+    @apply border-primary bg-primary/5;
+    box-shadow: inset 0 0 30px hsl(var(--primary) / 0.1);
+  }
+
+  /* Status indicator */
+  .status-dot {
+    @apply w-2 h-2 rounded-full;
+    animation: pulse-glow 2s infinite;
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% { 
+      opacity: 1;
+      box-shadow: 0 0 8px currentColor;
+    }
+    50% { 
+      opacity: 0.6;
+      box-shadow: 0 0 4px currentColor;
+    }
+  }
+
+  /* Loading skeleton with tactical feel */
+  .skeleton-tactical {
+    @apply bg-muted/50 rounded;
+    background: linear-gradient(
+      90deg,
+      hsl(var(--muted) / 0.5) 0%,
+      hsl(var(--muted) / 0.8) 50%,
+      hsl(var(--muted) / 0.5) 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+  }
+
+  @keyframes shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+}
+
+@layer utilities {
+  .text-gradient-tactical {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(var(--khaki)), hsl(var(--sand)));
+  }
+
+  .glow-olive {
+    box-shadow: 0 0 20px hsl(var(--olive) / 0.4);
+  }
+}
