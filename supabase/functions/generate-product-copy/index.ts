@@ -150,6 +150,10 @@ Return a JSON object with these exact fields:
 
   console.log("Vision response:", content);
 
+  if (!content || typeof content !== 'string') {
+    throw new Error("Invalid response from Vision API: missing or invalid content");
+  }
+
   // Parse JSON from response (handle potential markdown code blocks)
   let jsonStr = content;
   if (content.includes("```json")) {
@@ -404,6 +408,10 @@ Return ONLY the JSON object with suggestedTitle, description, features, tags, an
   const content = data.choices[0]?.message?.content;
 
   console.log("Copy generation response:", content);
+
+  if (!content || typeof content !== 'string') {
+    throw new Error("Invalid response from Copy API: missing or invalid content");
+  }
 
   // Parse JSON from response
   let jsonStr = content;
