@@ -35,7 +35,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
       {/* Title Input */}
       <div className="space-y-2">
         <Label htmlFor="title" className="text-sm font-mono uppercase tracking-wide text-muted-foreground">
-          Item Title / Working Title *
+          Item Title *
         </Label>
         <Input
           id="title"
@@ -45,7 +45,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
           className="input-tactical h-11"
         />
         <p className="text-xs text-muted-foreground">
-          If the item is unknown, type "UNKNOWN"
+          Not sure what it is? Type "UNKNOWN"
         </p>
       </div>
 

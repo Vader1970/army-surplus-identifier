@@ -91,7 +91,7 @@ Input data:
 Return a JSON object with these exact fields:
 {
   "guessedName": "string - your best identification (e.g. 'British Army DPM combat shirt' or 'UNKNOWN' if cannot identify)",
-  "branchOrNation": "string (e.g. 'British Army', 'US Navy', 'Swiss Army', 'German Army', or 'UNKNOWN')",
+  "branchOrNation": "string (e.g. 'British Army', 'US Navy', 'Swiss Army', 'German Army', 'NZ Army', or 'UNKNOWN')",
   "eraOrDecade": "string - use 'likely' if uncertain (e.g. 'likely 1980s', 'WWII', 'Cold War era', or 'UNKNOWN')",
   "itemType": "string (e.g. 'field shirt', 'parka', 'cargo trousers', 'rucksack', 'helmet', or 'UNKNOWN')",
   "camouflagePattern": "string (e.g. 'DPM', 'Woodland', 'Flecktarn', 'Olive drab', 'None/solid colour', or 'UNKNOWN')",
